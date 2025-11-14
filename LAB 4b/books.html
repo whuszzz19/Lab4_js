@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display JSON Data using jQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>Book Details (Check Console)</h2>
+
+  <script>
+    $(document).ready(function(){
+      $.getJSON("books.json", function(data){
+        // Title of first book
+        console.log("Title of first book: " + data.books[0].title);
+        
+        // Author of second book
+        console.log("Author of second book: " + data.books[1].author);
+        
+        // Genres of all books
+        console.log("Genres of all books:");
+        $.each(data.books, function(index, book){
+          console.log(book.title + " → " + book.genres.join(", "));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
